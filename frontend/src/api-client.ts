@@ -7,7 +7,7 @@ import {
   UserType,
 } from "../../backend/src/shared/types";
 import { BookingFormData } from "./forms/BookingForm/BookingForm";
-const API_BASE_URL =  "http://localhost:7000";
+const API_BASE_URL =  import.meta.env.VITE_API_BASE_URL || "";
 
 export const fetchCurrentUser = async (): Promise<UserType> => {
   const response = await fetch(`${API_BASE_URL}/api/users/me`, {
@@ -21,7 +21,7 @@ export const fetchCurrentUser = async (): Promise<UserType> => {
 
 export const register = async (formData: RegisterFormData) => {
   // console.log(formData);
-  const response = await fetch(`http://localhost:7000/api/users/register`, {
+  const response = await fetch(`${API_BASE_URL}/api/users/register`, {
     method: "POST",
     credentials: "include",
     headers: {
